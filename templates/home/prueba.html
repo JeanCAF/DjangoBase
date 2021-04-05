@@ -1,1 +1,21 @@
-<h1>hola mundo desde los nuevos templates</h1>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+</head>
+
+<body class="ejemplo1">
+    <h1 class="prueba">hola mundo desde los nuevos templates</h1>
+    <h1 class="ejemplo1">hola mundo desde los nuevos templates</h1>
+</body>
+
+<!-- Buttons (actions) -->
+<button type="button" class="success button">Save</button>
+<button type="button" class="alert button">Delete</button>
+
+</html>
