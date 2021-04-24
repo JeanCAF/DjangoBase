@@ -39,6 +39,13 @@ class ListByAreaEmpleados(ListView):
         return lista
 
 
+class ListaEmpleadosAdmin(ListView):
+    template_name = 'persona/lista_empleadosAdmin.html'
+    paginate_by = 10
+    ordering = 'fist_name'
+    context_object_name = 'empleados'
+    model = Empleado
+
 
 class ListEmpleadosByKword(ListView):
     template_name = 'persona/by_kword.html'
@@ -110,7 +117,7 @@ class EmpleadoUpdateView(UpdateView):
         'habilidades',
         'hoja_vida',
     ]
-    success_url = reverse_lazy('persona_app:correcto')
+    success_url = reverse_lazy('persona_app:empleados_admin')
 
     def form_valid(self, form):
         empleado = form.save()
@@ -123,5 +130,5 @@ class EmpleadoUpdateView(UpdateView):
 class EmpleadoDeleteView(DeleteView):
     template_name = "persona/delete.html"
     model = Empleado
-    success_url = reverse_lazy('persona_app:correcto')
+    success_url = reverse_lazy('persona_app:empleados_admin')
 
