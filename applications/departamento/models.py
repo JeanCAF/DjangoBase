@@ -8,4 +8,4 @@ class Departamento(models.Model):
     anulate = models.BooleanField('Anulado', default=False)
 
     def __str__(self):
-        return str(self.id) + '-' + self.name + '-' + self.shor_name
+        return self.shor_name

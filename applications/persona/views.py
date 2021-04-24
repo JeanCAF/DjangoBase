@@ -8,14 +8,28 @@ from .models import Empleado
 
 # Create your views here.
 
+class InicioView(TemplateView):
+    """ vista para cargar la pagina de inicio"""
+    template_name = 'inicio.html'
+
 class ListAllEmpleados(ListView):
     template_name = 'persona/list_all.html'
     paginate_by = 4
-    model = Empleado
+    ordering = 'fist_name'
+    context_object_name = 'empleados'
+
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get("kword", '')
+        lista = Empleado.objects.filter(
+            fist_name__icontains=palabra_clave
+        )
+        return lista
 
 
 class ListByAreaEmpleados(ListView):
     template_name = 'persona/list_by_area.html'
+    context_object_name = 'empleados'
+    paginate_by = 2
 
     def get_queryset(self):
         area = self.kwargs['shorname']

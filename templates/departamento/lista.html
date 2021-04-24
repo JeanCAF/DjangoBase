@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Lista de todos los Empleados {% endblock title %}
+{% block title %} Lista de todos los Departamentos {% endblock title %}
 
 {% block content %}
 
@@ -8,40 +8,29 @@
 
 <div class="grid-container">
     <div class="grid-x">
-        <h1 class="cell">Lista Empleados</h1>
-        <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
-            <div class="cell large-7">
-                <input type="text" id="kword" name="kword" placeholder="Buscar Empleado">
-            </div>
-            <div class="cell large-2">
-                <button type="submit" class="success button">Buscar</button>
-            </div>
-        </form>
+        <h1 class="cell">Lista Departamentos</h1>
         <div class="cell">
             <table>
                 <thead>
                 <tr>
-                    <th width="200">ID</th>
                     <th>NOMBRE</th>
-                    <th width="150">APELLIDOS</th>
-                    <th width="150">DEPARTAMENTOS</th>
+                    <th width="150">NOMBRE CORTO</th>
                     <th width="150">ACCION</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for e in empleados %}
+                {% for d in departamentos %}
                 <tr>
-                    <td>{{e.id}}</td>
-                    <td>{{e.fist_name}}</td>
-                    <td>{{e.last_name}}</td>
-                    <td>{{e.departamento}}</td>
-                    <td><a class="button tiny" href="{% url 'persona_app:empleados_detail' e.id %}">Ver</a></td>
+                    <td>{{d.name}}</td>
+                    <td>{{d.shor_name}}</td>
+                    <td><a class="button tiny" href="{% url 'persona_app:empleados_area' d.shor_name %}">Ver
+                        Empleados</a></td>
                 </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
-        <div class="cell">
+                <div class="cell">
             {% if is_paginated %}
             <nav aria-label="Pagination">
                 <ul class="pagination">
@@ -70,6 +59,5 @@
         </div>
     </div>
 </div>
-
 
 {% endblock content %}
