@@ -4,6 +4,7 @@ from django.views.generic import (
     ListView, DetailView, CreateView, TemplateView, UpdateView, DeleteView
 )
 from .models import Empleado
+from .form import EmpleadoForm
 
 
 # Create your views here.
@@ -88,15 +89,7 @@ class SuccessView(TemplateView):
 class EmpleadoCreateView(CreateView):
     template_name = 'persona/add.html'
     model = Empleado
-    fields = [
-        'fist_name',
-        'last_name',
-        'job',
-        'departamento',
-        'habilidades',
-        'hoja_vida',
-        'avatar',
-    ]
+    form_class = EmpleadoForm
     success_url = reverse_lazy('persona_app:empleados_all')
 
     def form_valid(self, form):
@@ -110,15 +103,7 @@ class EmpleadoCreateView(CreateView):
 class EmpleadoUpdateView(UpdateView):
     template_name = "persona/update.html"
     model = Empleado
-    fields = [
-        'fist_name',
-        'last_name',
-        'job',
-        'departamento',
-        'habilidades',
-        'hoja_vida',
-        'avatar',
-    ]
+    form_class = EmpleadoForm
     success_url = reverse_lazy('persona_app:empleados_admin')
 
     def form_valid(self, form):

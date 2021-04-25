@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %} Detalle Empleado {% endblock title %}
 
 {% block content %}
@@ -7,19 +9,29 @@
 {% include 'includes/header.html' %}
 
 <div class="grid-container">
-    <div class="grid-x">
+    <div class="grid-x grid-margin-x align-center">
         <h1 class="cell">Detalle de un Empleado</h1>
-        <div class="cell card" style="width: 800px;">
+        <div class="cell large-4 card" style="width: 800px;">
             <div class="card-divider">
-                Detalle de Emplado {{empleado.id}}
+                Empleado {{empleado.id}}
             </div>
-            <img src="{{ empleado.avatar }}">
-            {{ empleado.avatar }}
+            {% if empleado.avatar %}
+            <img style="height: 450px;" src="{{ empleado.avatar.url }}">
+            {% else %}
+            <img style="height: 450px;" src="{% static 'img/avatat.png' %}">
+            {% endif %}
             <div class="cell card-section">
-                <h4 class="cell">{{empleado.fist_name}} {{ object.last_name }}</h4>
-                <p class="cell">Trabajo: {{empleado.job}}</p>
-                <p class="cell">Habilidades: {{empleado.habilidades}}</p>
-                <p class="cell">Perteneciente al departamento de: {{empleado.departamento}}</p>
+                <h4 class="cell"><span class="label">Nombre:</span> {{empleado.fist_name}} {{ object.last_name }}</h4>
+                <p class="cell"><span class="label">Trabajo:</span> {{empleado.get_job_display}}</p>
+                <p class="cell"><span class="label">Perteneciente a:</span> {{empleado.departamento.name}}</p>
+                <p><span class="label">Habilidades:</span></p>
+                <ul class="vertical menu">
+                    {% for empleadoHabilidad in empleado.habilidades.all %}
+                    <li>
+                        {{ empleadoHabilidad.habilidad }}
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
