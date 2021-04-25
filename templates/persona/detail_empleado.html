@@ -1,3 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Detalle Empleado {% endblock title %}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">Detalle de un Empleado</h1>
+        <div class="cell card" style="width: 800px;">
+            <div class="card-divider">
+                Detalle de Emplado {{empleado.id}}
+            </div>
+            <img src="{{ empleado.avatar }}">
+            {{ empleado.avatar }}
+            <div class="cell card-section">
+                <h4 class="cell">{{empleado.fist_name}} {{ object.last_name }}</h4>
+                <p class="cell">Trabajo: {{empleado.job}}</p>
+                <p class="cell">Habilidades: {{empleado.habilidades}}</p>
+                <p class="cell">Perteneciente al departamento de: {{empleado.departamento}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
 <h1>Detalle de un Empleado</h1>
 <h3>{{ titulo }}</h3>
 

@@ -95,8 +95,9 @@ class EmpleadoCreateView(CreateView):
         'departamento',
         'habilidades',
         'hoja_vida',
+        'avatar',
     ]
-    success_url = reverse_lazy('persona_app:correcto')
+    success_url = reverse_lazy('persona_app:empleados_all')
 
     def form_valid(self, form):
         empleado = form.save()
@@ -116,6 +117,7 @@ class EmpleadoUpdateView(UpdateView):
         'departamento',
         'habilidades',
         'hoja_vida',
+        'avatar',
     ]
     success_url = reverse_lazy('persona_app:empleados_admin')
 

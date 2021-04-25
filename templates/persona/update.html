@@ -10,40 +10,49 @@
     <div class="grid-x">
         <h1 class="cell">Modificar datos del empleado</h1>
         <div class="cell">
-            <form class="grid-x grid-margin-x" method="POST">{% csrf_token %}
+            <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data">{% csrf_token %}
                 <div class="cell large-6">
                     <label> Nombres:
                         {{ form.fist_name }}
                     </label>
                 </div>
+
                 <div class="cell large-6">
                     <label> Apellidos:
                         {{ form.last_name }}
                     </label>
                 </div>
+
                 <div class="cell large-6">
                     <label> Trabajo:
                         {{ form.job }}
                     </label>
                 </div>
+
                 <div class="cell large-6">
                     <label> Area:
                         {{ form.departamento }}
                     </label>
                 </div>
+
                 <div class="cell large-12">
                     <label> Habilidades:
                         {{ form.habilidades }}
                     </label>
                 </div>
-                <div class="cell">
+
+                <div class="cell large-6">
                     <label> Hoja de vida:
                         {{ form.hoja_vida }}
                     </label>
                 </div>
-
-                <div class="cell">
-                    <button type="submit" class="success button">Actualizar</button>
+                <div class="cell large-6">
+                    <label> Avatar:
+                        {{ form.avatar }}
+                    </label>
+                    <div class="cell">
+                        <button type="submit" class="success button">Actualizar</button>
+                    </div>
                 </div>
             </form>
         </div>
